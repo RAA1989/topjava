@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class MealWithExceed {
-    public final LocalDateTime dateTime;
+    private final LocalDateTime dateTime;
 
     public String getDateTime() {
         return dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
@@ -22,9 +22,9 @@ public class MealWithExceed {
         return exceed;
     }
 
-    public final String description;
+    private final String description;
 
-    public final int calories;
+    private final int calories;
 
     private final boolean exceed;
 

@@ -25,6 +25,8 @@
         <th>Калории</th>
     </tr>
         <c:forEach var="num" items="${list}">
+            <jsp:useBean id="num" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
+
             <tr>
                 <td width="500">${num.dateTime}</td>
                 <td width="500">${num.description}</td>
@@ -32,7 +34,4 @@
             </tr>
         </c:forEach>
 </table>
-    <c:forEach var="num" items="${list}">
-        <p>${num}</p>
-    </c:forEach>
 </body>
