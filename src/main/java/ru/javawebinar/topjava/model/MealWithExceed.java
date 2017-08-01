@@ -1,13 +1,30 @@
 package ru.javawebinar.topjava.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MealWithExceed {
-    private final LocalDateTime dateTime;
+    public final LocalDateTime dateTime;
 
-    private final String description;
+    public String getDateTime() {
+        return dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
+    }
 
-    private final int calories;
+    public String getDescription() {
+        return description;
+    }
+
+    public int getCalories() {
+        return calories;
+    }
+
+    public boolean isExceed() {
+        return exceed;
+    }
+
+    public final String description;
+
+    public final int calories;
 
     private final boolean exceed;
 
@@ -21,7 +38,7 @@ public class MealWithExceed {
     @Override
     public String toString() {
         return "UserMealWithExceed{" +
-                "dateTime=" + dateTime +
+                "dateTime=" + dateTime.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
                 ", description='" + description + '\'' +
                 ", calories=" + calories +
                 ", exceed=" + exceed +
