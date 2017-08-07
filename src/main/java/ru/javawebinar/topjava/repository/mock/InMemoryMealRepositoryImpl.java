@@ -5,7 +5,9 @@ import ru.javawebinar.topjava.AuthorizedUser;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.MealRepository;
+import ru.javawebinar.topjava.to.MealWithExceed;
 import ru.javawebinar.topjava.util.MealsUtil;
+import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,23 +33,18 @@ public class InMemoryMealRepositoryImpl implements MealRepository {
 
     @Override
     public void delete(int id) {
+        if (repository.get(id).getUserId() != AuthorizedUser.id() || repository.get(id) == null) throw new NotFoundException("in delete");
         repository.remove(id);
     }
 
     @Override
     public Meal get(int id) {
-        Meal m = null;
-        for (Map.Entry<Integer,Meal> entry : repository.entrySet()){
-            if (entry.getValue().getUserId() == (AuthorizedUser.id())){
-                m = entry.getValue();
-                break;
-            }
-        }
-        return m;
+        if (repository.get(id).getUserId() != AuthorizedUser.id() || repository.get(id) == null) throw new NotFoundException("in get");
+        return repository.get(id);
     }
 
     @Override
-    public Collection<Meal> getAll() {
+    public List<Meal> getAll() {
         Collection<Meal> res = repository.values();
         List<Meal> meals = (List) res;
         meals.sort(new Comparator<Meal>() {

@@ -7,6 +7,7 @@ import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class MealServiceImpl implements MealService {
@@ -15,7 +16,7 @@ public class MealServiceImpl implements MealService {
     private MealRepository repository;
 
     @Override
-    public Collection<Meal> getAll() {
+    public List<Meal> getAll() {
         return repository.getAll();
     }
 
@@ -36,6 +37,6 @@ public class MealServiceImpl implements MealService {
 
     @Override
     public void update(Meal meal) {
-
+        repository.save(meal);
     }
 }
