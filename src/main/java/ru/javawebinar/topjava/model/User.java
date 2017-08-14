@@ -20,7 +20,7 @@ public class User extends NamedEntity {
 
     private int caloriesPerDay = DEFAULT_CALORIES_PER_DAY;
 
-    public User() {
+    public User(){
     }
 
     public User(User u) {
