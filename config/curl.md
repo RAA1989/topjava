@@ -20,7 +20,7 @@
 `curl -s -v http://localhost:8080/rest/meals/100008`
 
 #### delete Meals
-`curl -s -X DELETE http://localhost:8080/rest/meals/100002`
+`curl -s -X DELETE http://localhost:8080/topjava/rest/profile/meals/100002`
 
 #### create Meals
 `curl -s -X POST -d '{"dateTime":"2015-06-01T12:00","description":"Created lunch","calories":300}' -H 'Content-Type:application/json;charset=UTF-8' http://localhost:8080/topjava/rest/profile/meals`
